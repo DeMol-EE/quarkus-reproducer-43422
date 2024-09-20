@@ -10,6 +10,23 @@ import static org.hamcrest.CoreMatchers.is;
 @QuarkusTest
 class GreetingResourceTest {
 
+    @Test
+    void get() {
+        given()
+                .when().get("/hello")
+                .then()
+                .statusCode(200)
+                .body(is("here it works"));
+    }
+
+    @Test
+    void head() {
+        given()
+                .when().head("/hello")
+                .then()
+                .statusCode(200);
+    }
+
     @Nested
     class X {
 
